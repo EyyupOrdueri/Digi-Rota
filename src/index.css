@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+  .navbar {
+    padding: 0rem 2rem;
+    background-color: #0d47a1 !important;
+  }
+
+  .form-image {
+    min-width: 800px;
+    min-height: 800px;
+  }
+
+  .register-form {
+    flex: 1;
+    background-color: #eeeeee;
+    color: #000000;
+    padding: 5rem;
+  }
+
+  .form-title {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .form-label {
+    padding-left: 1.5rem;
+    margin-bottom: 0px;
+    font-size: 1.5rem;
+  }
+
+  .form-control {
+    width: 90%;
+    margin: 20px;
+    padding: 5px 10px;
+  }
+
+  .mainPageImg {
+    width: 70vw;
+    /* height: 80vh; */
+    
+  }
+  
