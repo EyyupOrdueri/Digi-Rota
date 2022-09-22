@@ -31,6 +31,7 @@ const AppRouter = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/graphics" element={<Graphics />} />
+        <Route path="/askdaslkdjaslkdjasdlkjasdlkjasdlakj" element={<PrivateRouter />} />
       </Routes>
     </BrowserRouter>
   )
