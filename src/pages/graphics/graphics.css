@@ -1,0 +1,15 @@
+tr {
+  width: 100%;
+}
+
+#topLeftCorner {
+  width: 4%;
+}
+
+td {
+  width: 30%;
+}
+
+table {
+  margin-top: 2rem;
+}
