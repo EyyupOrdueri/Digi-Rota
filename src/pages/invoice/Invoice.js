@@ -1,6 +1,19 @@
 import "./invoice.css";
+import { useState } from "react";
 
 const Invoice = () => {
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [sectorName, setSectorName] = useState("");
+  const [remuneration, setRemuneration] = useState("");
+  const [adsExpense, setAdsExpense] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
   return (
     <>
       <form>
@@ -88,7 +101,11 @@ const Invoice = () => {
           />
         </div>
         <div className="text-center submit-btn">
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onSubmit={handleSubmit}
+          >
             Create Invoice
           </button>
         </div>
