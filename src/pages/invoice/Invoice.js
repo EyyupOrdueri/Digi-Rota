@@ -1,23 +1,25 @@
 import "./invoice.css";
 import { useState } from "react";
+import { addUser } from "../../auth/firebase";
 
 const Invoice = () => {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [companyName, setCompanyName] = useState("");
   const [sectorName, setSectorName] = useState("");
   const [remuneration, setRemuneration] = useState("");
   const [adsExpense, setAdsExpense] = useState("");
+  const [extraDoc, setExtraDoc] = useState("");
+  const [agency, setAgency] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    addUser(sectorName, remuneration, adsExpense);
   };
+
+  console.log(extraDoc);
 
   return (
     <>
-      <form>
-        <div className="row justify-content-start mt-md-2">
+      <form onSubmit={handleSubmit}>
+        {/* <div className="row justify-content-start mt-md-2">
           <div className="form-group col-md-5">
             <label htmlFor="invoiceName">Name</label>
             <input
@@ -55,6 +57,19 @@ const Invoice = () => {
               placeholder="In which sector does the company you serve operate in?"
             />
           </div>
+        </div> */}
+
+        <div className="form-group col-md-4">
+          <label htmlFor="sectorName">Sector Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="sectorName"
+            placeholder="In which sector does the company you serve operate in?"
+            onChange={(e) => {
+              setSectorName(e.target.value);
+            }}
+          />
         </div>
 
         <div>
@@ -65,6 +80,9 @@ const Invoice = () => {
               className="form-control"
               id="serviceFee"
               placeholder="Your service fee per month $"
+              onChange={(e) => {
+                setRemuneration(e.target.value);
+              }}
             />
           </div>
           <div className="form-group col-md-4">
@@ -74,6 +92,9 @@ const Invoice = () => {
               className="form-control"
               id="adsExpense"
               placeholder="Total advertisement expense you have spent $"
+              onChange={(e) => {
+                setAdsExpense(e.target.value);
+              }}
             />
           </div>
         </div>
@@ -84,6 +105,9 @@ const Invoice = () => {
             type="checkbox"
             value=""
             id="havingAgency"
+            onClick={() => {
+              agency ? setAgency(false) : setAgency(true);
+            }}
           />
           <label className="form-check-label" htmlFor="havingAgency">
             I have a digital marketing agency.
@@ -98,14 +122,13 @@ const Invoice = () => {
             type="file"
             className="custom-file-input m-md-4"
             id="customFile"
+            onChange={(e) => {
+              setExtraDoc(e.target.value);
+            }}
           />
         </div>
         <div className="text-center submit-btn">
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onSubmit={handleSubmit}
-          >
+          <button type="submit" className="btn btn-primary">
             Create Invoice
           </button>
         </div>

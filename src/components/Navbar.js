@@ -22,31 +22,56 @@ const Navbar = () => {
           </Link>
           <div className="d-flex text-white align-items-center">
             {currentUser ? (
-              <>
-                <button className="btn" onClick={() => navigate("/invoice")}>
-                  <h4>Invoice</h4>
-                </button>
-                <button className="btn" onClick={() => navigate("/graphics")}>
-                  <h4>Graphics</h4>
-                </button>
-                <button className="btn" onClick={() => navigate("/profile")}>
-                  <h4>Profile</h4>
-                </button>
-                <button className="btn" onClick={() => navigate("/admin")}>
-                  <h4>Admin</h4>
-                </button>
+              currentUser.email === "eyyupordueri@gmail.com" ? (
+                <>
+                  <button className="btn" onClick={() => navigate("/invoice")}>
+                    <h4>Invoice</h4>
+                  </button>
+                  <button className="btn" onClick={() => navigate("/graphics")}>
+                    <h4>Graphics</h4>
+                  </button>
+                  <button className="btn" onClick={() => navigate("/profile")}>
+                    <h4>Profile</h4>
+                  </button>
+                  <button className="btn" onClick={() => navigate("/admin")}>
+                    <h4>Admin</h4>
+                  </button>
 
-                <h6 className="mb-0 text-capitalize">
-                  {" "}
-                  {currentUser.displayName}{" "}
-                </h6>
-                <button
-                  className="ms-2 btn btn-outline-light"
-                  onClick={() => logOut()}
-                >
-                  Logout
-                </button>
-              </>
+                  <h6 className="mb-0 text-capitalize">
+                    {" "}
+                    {currentUser.displayName}{" "}
+                  </h6>
+                  <button
+                    className="ms-2 btn btn-outline-light"
+                    onClick={() => logOut()}
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button className="btn" onClick={() => navigate("/invoice")}>
+                    <h4>Invoice</h4>
+                  </button>
+                  <button className="btn" onClick={() => navigate("/graphics")}>
+                    <h4>Graphics</h4>
+                  </button>
+                  <button className="btn" onClick={() => navigate("/profile")}>
+                    <h4>Profile</h4>
+                  </button>
+
+                  <h6 className="mb-0 text-capitalize">
+                    {" "}
+                    {currentUser.displayName}{" "}
+                  </h6>
+                  <button
+                    className="ms-2 btn btn-outline-light"
+                    onClick={() => logOut()}
+                  >
+                    Logout
+                  </button>
+                </>
+              )
             ) : (
               <>
                 <button className="btn" onClick={handleInvoice}>
@@ -57,9 +82,6 @@ const Navbar = () => {
                 </button>
                 <button className="btn" onClick={handleInvoice}>
                   <h4>Profile</h4>
-                </button>
-                <button className="btn" onClick={handleInvoice}>
-                  <h4>Admin</h4>
                 </button>
                 <button
                   className="ms-2 btn btn-outline-light"

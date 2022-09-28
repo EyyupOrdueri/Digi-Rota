@@ -32,11 +32,32 @@ const AppRouter = () => {
         <Route path="/register" element={<Register />} />
         <Route
           path="/invoice"
-          element={!currentUser ? <Login /> : <Invoice />}
+          element={
+            !currentUser ? <Navigate to="/login" replace /> : <Invoice />
+          }
         />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/graphics" element={<Graphics />} />
+        <Route
+          path="/profile"
+          element={
+            !currentUser ? <Navigate to="/login" replace /> : <Profile />
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            currentUser.email === "eyyupordueri@gmail.com" ? (
+              <Admin />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route
+          path="/graphics"
+          element={
+            !currentUser ? <Navigate to="/login" replace /> : <Graphics />
+          }
+        />
         <Route
           path="/askdaslkdjaslkdjasdlkjasdlkjasdlakj"
           element={<PrivateRouter />}
