@@ -1,5 +1,5 @@
 import "./invoice.css";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { addUser } from "../../auth/firebase";
 
 const Invoice = () => {
@@ -9,10 +9,20 @@ const Invoice = () => {
   const [extraDoc, setExtraDoc] = useState("");
   const [agency, setAgency] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addUser(sectorName, remuneration, adsExpense);
-  };
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+
+      addUser(sectorName, remuneration, adsExpense);
+
+      setSectorName("");
+      setRemuneration("");
+      setAdsExpense("");
+      setExtraDoc("");
+      setAgency("");
+    },
+    [sectorName, remuneration, adsExpense]
+  );
 
   console.log(extraDoc);
 
@@ -63,12 +73,14 @@ const Invoice = () => {
           <label htmlFor="sectorName">Sector Name</label>
           <input
             type="text"
+            value={sectorName}
             className="form-control"
             id="sectorName"
             placeholder="In which sector does the company you serve operate in?"
             onChange={(e) => {
               setSectorName(e.target.value);
             }}
+            required
           />
         </div>
 
@@ -76,6 +88,7 @@ const Invoice = () => {
           <div className="form-group col-md-4">
             <label htmlFor="serviceFee">Remuneration</label>
             <input
+              value={remuneration}
               type="number"
               className="form-control"
               id="serviceFee"
@@ -83,11 +96,13 @@ const Invoice = () => {
               onChange={(e) => {
                 setRemuneration(e.target.value);
               }}
+              required
             />
           </div>
           <div className="form-group col-md-4">
             <label htmlFor="adsExpense">Total ads expense</label>
             <input
+              value={adsExpense}
               type="number"
               className="form-control"
               id="adsExpense"
@@ -95,15 +110,16 @@ const Invoice = () => {
               onChange={(e) => {
                 setAdsExpense(e.target.value);
               }}
+              required
             />
           </div>
         </div>
 
         <div className="form-check m-md-3">
           <input
+            value={agency}
             className="form-check-input"
             type="checkbox"
-            value=""
             id="havingAgency"
             onClick={() => {
               agency ? setAgency(false) : setAgency(true);
@@ -119,6 +135,7 @@ const Invoice = () => {
             Add your invoice file here 👉
           </label>
           <input
+            value={extraDoc}
             type="file"
             className="custom-file-input m-md-4"
             id="customFile"

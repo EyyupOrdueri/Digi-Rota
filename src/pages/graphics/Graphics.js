@@ -1,6 +1,13 @@
 import "./graphics.css";
+import { useUsersListenerUpdate } from "../../auth/firebase";
+// import { useState } from "react";
 
 const Graphics = () => {
+  // const [order, setOrder] = useState("");
+  // const [loading, setLoading] = useState(false);
+
+  const users = useUsersListenerUpdate();
+
   return (
     <>
       <h3 className="text-center">Table of Price Per Month</h3>
@@ -16,7 +23,7 @@ const Graphics = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {/* <tr>
             <th scope="row">1</th>
             <td>Gürkan Ordueri</td>
             <td>Gym</td>
@@ -33,7 +40,17 @@ const Graphics = () => {
             <td>Eyyüp Ordueri</td>
             <td>Restaurants</td>
             <td>2.000</td>
-          </tr>
+          </tr> */}
+          {users.map((user) =>
+            user.check ? (
+              <tr>
+                <th scope="row">#</th>
+                <td>{user.fullName}</td>
+                <td>{user.sectorName}</td>
+                <td>{user.remuneration}</td>
+              </tr>
+            ) : null
+          )}
         </tbody>
       </table>
 
@@ -50,7 +67,7 @@ const Graphics = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {/* <tr>
             <th scope="row">1</th>
             <td>Gürkan Ordueri</td>
             <td>Gym</td>
@@ -67,7 +84,17 @@ const Graphics = () => {
             <td>Eyyüp Ordueri</td>
             <td>Restaurants</td>
             <td>19.000</td>
-          </tr>
+          </tr> */}
+          {users.map((user) =>
+            user.check ? (
+              <tr>
+                <th scope="row">#</th>
+                <td>{user.fullName}</td>
+                <td>{user.sectorName}</td>
+                <td>{user.adsExpense}</td>
+              </tr>
+            ) : null
+          )}
         </tbody>
       </table>
     </>

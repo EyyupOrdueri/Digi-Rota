@@ -18,6 +18,11 @@ import {
   addDoc,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import {
+  toastErrorNotify,
+  toastSuccessNotify,
+  toastInfoNotify,
+} from "../helpers/ToastNotify";
 
 // TODO: Replace the following with your app's Firebase project configuration
 //* https://firebase.google.com/docs/auth/web/start
@@ -53,10 +58,13 @@ export const createUser = async (email, password, navigate, displayName) => {
     await updateProfile(auth.currentUser, {
       displayName: displayName,
     });
+
+    toastSuccessNotify("Registered successfully!");
+
     navigate("/");
     console.log(userCredential);
   } catch (err) {
-    console.log(err);
+    toastErrorNotify(err.message);
   }
 };
 
@@ -64,6 +72,8 @@ export const createUser = async (email, password, navigate, displayName) => {
 //* => Authentication => sign-in-method => enable Email/password
 //! Email/password ile girişi enable yap
 export const signIn = async (email, password, navigate) => {
+  //? mevcut kullanıcının giriş yapması için kullanılan firebase metodu
+
   try {
     let userCredential = await signInWithEmailAndPassword(
       auth,
@@ -72,9 +82,11 @@ export const signIn = async (email, password, navigate) => {
     );
     navigate("/");
 
+    toastSuccessNotify("Logged in successfully!");
+
     console.log(userCredential);
   } catch (err) {
-    console.log(err);
+    toastErrorNotify(err.message);
   }
 };
 
@@ -92,6 +104,7 @@ export const userObserver = (setCurrentUser) => {
 
 export const logOut = () => {
   signOut(auth);
+  toastSuccessNotify("Logged out successfully!");
 };
 
 //* https://console.firebase.google.com/
@@ -108,6 +121,7 @@ export const signUpProvider = (navigate) => {
     .then((result) => {
       console.log(result);
       navigate("/");
+      toastSuccessNotify("Logged in successfully!");
     })
     .catch((error) => {
       // Handle Errors here.
@@ -140,6 +154,7 @@ export const useUsersListener = () => {
 
 export const deleteUsers = (id) => {
   deleteDoc(doc(db, "users", id));
+  toastErrorNotify("Users invoice deleted!");
 };
 
 export const addUser = (sectorName, remuneration, adsExpense) => {
@@ -159,4 +174,24 @@ export const addUser = (sectorName, remuneration, adsExpense) => {
     uid: uid,
     check: false,
   });
+
+  // toastSuccessNotify("Your invoice request sended to admin.");
+  toastInfoNotify("Your invoice request sended to admin.");
+};
+
+export const useUsersListenerUpdate = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    return onSnapshot(usersRef, (snapshot) => {
+      setUsers(
+        snapshot.docs.map((doc) => {
+          const data = doc.data();
+          return { id: doc.id, ...data };
+        })
+      );
+    });
+  }, []);
+
+  return users;
 };
