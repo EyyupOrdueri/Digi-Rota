@@ -15,6 +15,7 @@ import Profile from "../pages/profile/Profile";
 import Register from "../pages/register/Register";
 import { AuthContext } from "../context/AuthContext";
 import Graphics from "../pages/graphics/Graphics";
+import CompanyOwner from "../pages/companyOwner/CompanyOwner";
 
 const AppRouter = () => {
   const { currentUser } = useContext(AuthContext);
@@ -61,6 +62,16 @@ const AppRouter = () => {
         <Route
           path="/askdaslkdjaslkdjasdlkjasdlkjasdlakj"
           element={<PrivateRouter />}
+        />
+        <Route
+          path="/companyowner"
+          element={
+            !currentUser ? (
+              <Navigate to="/companyowner" replace />
+            ) : (
+              <CompanyOwner />
+            )
+          }
         />
       </Routes>
     </BrowserRouter>

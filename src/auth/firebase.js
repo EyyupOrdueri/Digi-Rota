@@ -59,7 +59,7 @@ export const createUser = async (email, password, navigate, displayName) => {
       displayName: displayName,
     });
 
-    toastSuccessNotify("Registered successfully!");
+    toastSuccessNotify("Kaydınız başarıyla oluşturuldu!");
 
     navigate("/");
     console.log(userCredential);
@@ -82,7 +82,7 @@ export const signIn = async (email, password, navigate) => {
     );
     navigate("/");
 
-    toastSuccessNotify("Logged in successfully!");
+    toastSuccessNotify("Başarıyla giriş yapıldı!");
 
     console.log(userCredential);
   } catch (err) {
@@ -104,7 +104,7 @@ export const userObserver = (setCurrentUser) => {
 
 export const logOut = () => {
   signOut(auth);
-  toastSuccessNotify("Logged out successfully!");
+  toastSuccessNotify("Başarıyla çıkış yapıldı!");
 };
 
 //* https://console.firebase.google.com/
@@ -121,7 +121,7 @@ export const signUpProvider = (navigate) => {
     .then((result) => {
       console.log(result);
       navigate("/");
-      toastSuccessNotify("Logged in successfully!");
+      toastSuccessNotify("Başarıyla giriş yapıldı!");
     })
     .catch((error) => {
       // Handle Errors here.
@@ -154,7 +154,7 @@ export const useUsersListener = () => {
 
 export const deleteUsers = (id) => {
   deleteDoc(doc(db, "users", id));
-  toastErrorNotify("Users invoice deleted!");
+  toastErrorNotify("Fatura silindi!");
 };
 
 export const addUser = (sectorName, remuneration, adsExpense) => {
@@ -176,7 +176,7 @@ export const addUser = (sectorName, remuneration, adsExpense) => {
   });
 
   // toastSuccessNotify("Your invoice request sended to admin.");
-  toastInfoNotify("Your invoice request sended to admin.");
+  toastInfoNotify("Fatura oluşturma talebiniz başarıyla iletildi.");
 };
 
 export const useUsersListenerUpdate = () => {

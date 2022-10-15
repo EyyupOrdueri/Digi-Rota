@@ -69,14 +69,14 @@ const Invoice = () => {
           </div>
         </div> */}
 
-        <div className="form-group col-md-4">
-          <label htmlFor="sectorName">Sector Name</label>
+        <div className="form-group col-md-6">
+          <label htmlFor="sectorName">Sektör İsmi</label>
           <input
             type="text"
             value={sectorName}
             className="form-control"
             id="sectorName"
-            placeholder="In which sector does the company you serve operate in?"
+            placeholder="Hizmet verdiğiniz firma hangi sektörde faaliyet gösteriyor?"
             onChange={(e) => {
               setSectorName(e.target.value);
             }}
@@ -85,28 +85,28 @@ const Invoice = () => {
         </div>
 
         <div>
-          <div className="form-group col-md-4">
-            <label htmlFor="serviceFee">Remuneration</label>
+          <div className="form-group col-md-6">
+            <label htmlFor="serviceFee">Aylık Gelir</label>
             <input
               value={remuneration}
               type="number"
               className="form-control"
               id="serviceFee"
-              placeholder="Your service fee per month $"
+              placeholder="Aldığınız aylık hizmet bedelini giriniz. (TL olarak)"
               onChange={(e) => {
                 setRemuneration(e.target.value);
               }}
               required
             />
           </div>
-          <div className="form-group col-md-4">
-            <label htmlFor="adsExpense">Total ads expense</label>
+          <div className="form-group col-md-6">
+            <label htmlFor="adsExpense">Toplam Reklam Gideri</label>
             <input
               value={adsExpense}
               type="number"
               className="form-control"
               id="adsExpense"
-              placeholder="Total advertisement expense you have spent $"
+              placeholder="Harcadığınız toplam reklam giderini giriniz. (TL olarak)"
               onChange={(e) => {
                 setAdsExpense(e.target.value);
               }}
@@ -126,18 +126,18 @@ const Invoice = () => {
             }}
           />
           <label className="form-check-label" htmlFor="havingAgency">
-            I have a digital marketing agency.
+            Dijital pazarlama ajansım var.
           </label>
         </div>
 
         <div>
           <label className="custom-file-label" htmlFor="customFile">
-            Add your invoice file here 👉
+            Fatura ile ilgili belgenizi buradan ekleyiniz 👉
           </label>
           <input
             value={extraDoc}
             type="file"
-            className="custom-file-input m-md-4"
+            className="custom-file-input m-md-6"
             id="customFile"
             onChange={(e) => {
               setExtraDoc(e.target.value);
@@ -146,7 +146,7 @@ const Invoice = () => {
         </div>
         <div className="text-center submit-btn">
           <button type="submit" className="btn btn-primary">
-            Create Invoice
+            Fatura Oluştur
           </button>
         </div>
       </form>

@@ -9,7 +9,7 @@ const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
 
   const handleInvoice = () => {
-    alert("You should first login!");
+    alert("Öncelikle giriş yapmalısın!");
     navigate("/login");
   };
 
@@ -25,16 +25,22 @@ const Navbar = () => {
               currentUser.email === "eyyupordueri@gmail.com" ? (
                 <>
                   <button className="btn" onClick={() => navigate("/invoice")}>
-                    <h4>Invoice</h4>
+                    <h4>Fatura Oluştur</h4>
                   </button>
                   <button className="btn" onClick={() => navigate("/graphics")}>
-                    <h4>Graphics</h4>
+                    <h4>Grafikler</h4>
                   </button>
                   <button className="btn" onClick={() => navigate("/profile")}>
-                    <h4>Profile</h4>
+                    <h4>Kullanıcı Bilgileri</h4>
                   </button>
                   <button className="btn" onClick={() => navigate("/admin")}>
                     <h4>Admin</h4>
+                  </button>
+                  <button
+                    className="btn"
+                    onClick={() => navigate("/companyowner")}
+                  >
+                    <h4>İlan Ver</h4>
                   </button>
 
                   <h6 className="mb-0 text-capitalize">
@@ -45,19 +51,19 @@ const Navbar = () => {
                     className="ms-2 btn btn-outline-light"
                     onClick={() => logOut()}
                   >
-                    Logout
+                    Çıkış Yap
                   </button>
                 </>
               ) : (
                 <>
                   <button className="btn" onClick={() => navigate("/invoice")}>
-                    <h4>Invoice</h4>
+                    <h4>Fatura Oluştur</h4>
                   </button>
                   <button className="btn" onClick={() => navigate("/graphics")}>
-                    <h4>Graphics</h4>
+                    <h4>Grafikler</h4>
                   </button>
                   <button className="btn" onClick={() => navigate("/profile")}>
-                    <h4>Profile</h4>
+                    <h4>Kullanıcı Bilgileri</h4>
                   </button>
 
                   <h6 className="mb-0 text-capitalize">
@@ -68,33 +74,39 @@ const Navbar = () => {
                     className="ms-2 btn btn-outline-light"
                     onClick={() => logOut()}
                   >
-                    Logout
+                    Çıkış Yap
                   </button>
                 </>
               )
             ) : (
               <>
                 <button className="btn" onClick={handleInvoice}>
-                  <h4>Invoice</h4>
+                  <h4>Fatura Oluştur</h4>
                 </button>
                 <button className="btn" onClick={handleInvoice}>
-                  <h4>Graphics</h4>
+                  <h4>Grafikler</h4>
                 </button>
                 <button className="btn" onClick={handleInvoice}>
-                  <h4>Profile</h4>
+                  <h4>Kullanıcı Bilgileri</h4>
+                </button>
+                <button
+                  className="btn"
+                  onClick={() => navigate("/companyowner")}
+                >
+                  <h4>İlan Ver</h4>
                 </button>
                 <button
                   className="ms-2 btn btn-outline-light"
                   onClick={() => navigate("/login")}
                 >
-                  Login
+                  Giriş Yap
                 </button>
                 <button
                   className="ms-2 btn btn-outline-light"
                   onClick={() => navigate("/register")}
                 >
                   {" "}
-                  Register{" "}
+                  Kayıt Ol{" "}
                 </button>
               </>
             )}
