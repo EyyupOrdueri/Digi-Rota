@@ -5,3 +5,13 @@
 body {
   height: 100vh;
 }
+
+.graphics-height {
+  height: 500px;
+}
+
+.home-icon {
+  text-decoration: none;
+  border: none;
+  background: none;
+}

@@ -17,13 +17,25 @@ const Navbar = () => {
     <div>
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <Link to={"/"} className="navbar-brand text-white">
+          {currentUser ? (
+            <Link to={"/home"} className="navbar-brand text-white">
+              <h4>Digi Rota</h4>
+            </Link>
+          ) : (
+            <button className="home-icon text-white" onClick={handleInvoice}>
+              <h4>Digi Rota</h4>
+            </button>
+          )}
+          {/* <Link to={"/home"} className="navbar-brand text-white">
             <h4>Digi Rota</h4>
-          </Link>
+          </Link> */}
           <div className="d-flex text-white align-items-center">
             {currentUser ? (
               currentUser.email === "eyyupordueri@gmail.com" ? (
                 <>
+                  <button className="btn" onClick={() => navigate("/home")}>
+                    <h4>Anasayfa</h4>
+                  </button>
                   <button className="btn" onClick={() => navigate("/invoice")}>
                     <h4>Fatura Oluştur</h4>
                   </button>
@@ -56,6 +68,9 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
+                  <button className="btn" onClick={() => navigate("/home")}>
+                    <h4>Anasayfa</h4>
+                  </button>
                   <button className="btn" onClick={() => navigate("/invoice")}>
                     <h4>Fatura Oluştur</h4>
                   </button>
@@ -80,6 +95,9 @@ const Navbar = () => {
               )
             ) : (
               <>
+                <button className="btn" onClick={handleInvoice}>
+                  <h4>Anasayfa</h4>
+                </button>
                 <button className="btn" onClick={handleInvoice}>
                   <h4>Fatura Oluştur</h4>
                 </button>

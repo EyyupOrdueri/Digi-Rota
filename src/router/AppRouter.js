@@ -16,6 +16,7 @@ import Register from "../pages/register/Register";
 import { AuthContext } from "../context/AuthContext";
 import Graphics from "../pages/graphics/Graphics";
 import CompanyOwner from "../pages/companyOwner/CompanyOwner";
+import Giris from "../pages/giriş/Giris";
 
 const AppRouter = () => {
   const { currentUser } = useContext(AuthContext);
@@ -28,9 +29,14 @@ const AppRouter = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<Giris />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route
+          path="/home"
+          element={!currentUser ? <Navigate to="/login" replace /> : <Home />}
+        />
         <Route
           path="/invoice"
           element={

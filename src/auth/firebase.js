@@ -61,7 +61,7 @@ export const createUser = async (email, password, navigate, displayName) => {
 
     toastSuccessNotify("Kaydınız başarıyla oluşturuldu!");
 
-    navigate("/");
+    navigate("/home");
     console.log(userCredential);
   } catch (err) {
     toastErrorNotify(err.message);
@@ -80,7 +80,7 @@ export const signIn = async (email, password, navigate) => {
       email,
       password
     );
-    navigate("/");
+    navigate("/home");
 
     toastSuccessNotify("Başarıyla giriş yapıldı!");
 
@@ -120,7 +120,7 @@ export const signUpProvider = (navigate) => {
   signInWithPopup(auth, provider)
     .then((result) => {
       console.log(result);
-      navigate("/");
+      navigate("/home");
       toastSuccessNotify("Başarıyla giriş yapıldı!");
     })
     .catch((error) => {
