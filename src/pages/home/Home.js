@@ -118,15 +118,19 @@ const Home = () => {
       </div>
       <div className="graphics d-flex justify-content-around mt-4 ">
         <div>
-          <div className="totalAds border border-secondary">
+          <div className="totalAds border border-secondary rounded p-2">
             <h6>Toplamda reklamlara harcanan para</h6>
-            <p>{toplamReklamGideriDegeri}</p>
+            <p className="text-center text-bg-info">
+              {toplamReklamGideriDegeri}
+            </p>
           </div>
         </div>
         <div>
-          <div className="totalIncome border border-secondary">
+          <div className="totalIncome border border-secondary rounded p-2">
             <h6>Bir ayda elde edilen toplam hizmet bedeli</h6>
-            <p>{toplamHizmetGideriDegeri}</p>
+            <p className="text-center text-bg-info">
+              {toplamHizmetGideriDegeri}
+            </p>
           </div>
         </div>
       </div>
